@@ -2,52 +2,49 @@
 #include <cstring>
 using namespace std;
 
-string qLetterType (string s, string letters_vowel, string letters_consonant, int length);
+string qLetterType (string s);
 
 int main ()
 {
-    int length=0;
-    string letters_vowel="aeiouy";
-    string letters_consonant="bcdfjhjklmnpqrstvwxz";
-
     string s;
     cout << "Insert letter ";
     cin  >> s;
-    cout << qLetterType(s,letters_vowel,letters_consonant,length);
+    cout << qLetterType(s);
     return 0;
 }
 
 
-string qLetterType (string s, string letters_vowel, string letters_consonant, int length)
+string qLetterType (string s)
 {
-    length=s.length();
-    bool count=false;
-    string StringOut=" ";
+    string lettersVowel="aeiouy";
+    string lettersConsonant="bcdfghjklmnpqrstvwxz";
+    bool count = false;
+    string StringOut = " ";
 
-    if (length==1){
-        length =letters_vowel.length();
-        for (int i=0;i<length;i++){
-            if (s[0]==letters_vowel[i]){
+    if (s.length()==1){
+      int length = lettersVowel.length();
+        for (int i=0; i<length; i++){
+            if (s[0]==lettersVowel[i]){
                 count=true;
-                StringOut= "Vowel\n";
+                StringOut = "Vowel\n";
                 break;
             }
         }
         if (count == false){
-            length =letters_consonant.length();
-            for (int i=0;i<length;i++){
-                if (s[0]==letters_consonant[i]){
+            length = lettersConsonant.length();
+            for (int i=0; i<length; i++){
+                if (s[0]==lettersConsonant[i]){
                     count=true;
-                    StringOut= "Consonant\n";
+                    StringOut = "Consonant\n";
                     break;
                 }
             }
             if (count==false){
-                StringOut= "Mistake: not a letter\n";
+                StringOut = "Mistake: not a letter\n";
             }
         }
     }else{
-        StringOut= "Mistake: not a single char\n";
+        StringOut = "Mistake: not a single char\n";
     }
     return StringOut;
 }
