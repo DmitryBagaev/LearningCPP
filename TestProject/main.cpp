@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstring>
+#include <vector>
+
 using namespace std;
 
 string qLetterType (string s);
@@ -7,44 +9,53 @@ string qLetterType (string s);
 int main ()
 {
     string s;
+    string vowel = "vowel";
+    string consonant = "consonant";
+
     cout << "Insert letter ";
     cin  >> s;
     cout << qLetterType(s);
+
     return 0;
 }
 
+string qLetterType (string s){
+    string lettersVowel = "aeiouy";
+    string lettersConsonant = "bcdfghjklmnpqrstvwxz";
+    int lengthVowel = lettersVowel.length();
+    int lengthConsonant = lettersConsonant.length();
 
-string qLetterType (string s)
-{
-    string lettersVowel="aeiouy";
-    string lettersConsonant="bcdfghjklmnpqrstvwxz";
-    bool count = false;
-    string StringOut = " ";
+    vector <char> letters;
+    string stringOut;
+
+    for (int i=0; i<lengthVowel; i++){
+        letters.push_back(lettersVowel[i]);
+    }
+
+    for (int i=0; i<lengthConsonant; i++){
+        letters.push_back(lettersConsonant[i]);
+    }
+
+    int lengthVector = letters.size();
+    int par = 1;
 
     if (s.length()==1){
-      int length = lettersVowel.length();
-        for (int i=0; i<length; i++){
-            if (s[0]==lettersVowel[i]){
-                count=true;
-                StringOut = "Vowel\n";
-                break;
-            }
-        }
-        if (count == false){
-            length = lettersConsonant.length();
-            for (int i=0; i<length; i++){
-                if (s[0]==lettersConsonant[i]){
-                    count=true;
-                    StringOut = "Consonant\n";
-                    break;
+        for (int i=0; i<lengthVector; i++){
+            if (s[0]==letters[i]){
+                par = 0;
+                if ( i < lengthVowel-1 ){
+                    stringOut = "Vowel\n";
+                } else {
+                    stringOut = "Consonant\n";
                 }
             }
-            if (count==false){
-                StringOut = "Mistake: not a letter\n";
-            }
         }
-    }else{
-        StringOut = "Mistake: not a single char\n";
+        if ( par == 1){
+         stringOut = "Error: not a letter\n";
+        }
+    } else {
+        stringOut = "Error: not a single char\n";
+
     }
-    return StringOut;
+    return stringOut;
 }
