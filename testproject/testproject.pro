@@ -8,7 +8,7 @@ QT       += core
 
 QT       -= gui
 
-TARGET = TestProject
+TARGET = testproject
 CONFIG   += console
 CONFIG   -= app_bundle
 CONFIG   += c++11
