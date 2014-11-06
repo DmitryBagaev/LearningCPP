@@ -4,43 +4,35 @@
 
 using namespace std;
 
-string qLetterType (char c);
+string qLetterType (char letter);
 
 int main ()
 {
-    string s;
+    string inputString;
 
     cout << "Insert letter: ";
-    cin  >> s;
-    if ( s.length() != 1 ){
+    cin  >> inputString;
+    if ( inputString.length() != 1 ){
         cout << "Invalid number of symbols\n";
     } else {
-        char c = s[0];
-        cout << qLetterType(c);
+        char letter = inputString[0];
+        cout << qLetterType(letter);
     }
     return 0;
 }
 
-string qLetterType (char c){
+string qLetterType (char letter){
 
     string stringOut;
-    string lettersVowel = "aeiouy";
-    string lettersConsonant = "bcdfghjklmnpqrstvwxz";
-    int lengthVowel = lettersVowel.length();
-    int lengthConsonant = lettersConsonant.length();
 
-    set <char> vowels;
-    set <char> consonants;
+    char vowelsArray[6] = {'a','e','i','o','u','y'};
+    char consonantArray[20] = {'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z'};
+    set <char> vowels(vowelsArray,vowelsArray+6);
+    set <char> consonants(consonantArray,consonantArray+20);
     set <char>::iterator it;
-    for (int i=0; i<lengthVowel;i++){
-        vowels.insert(lettersVowel[i]);
-    }
-    for (int i=0; i<lengthConsonant;i++){
-        consonants.insert(lettersConsonant[i]);
-    }
-    it = vowels.find(c);
+    it = vowels.find(letter);
     if ( it == vowels.end() ){
-        it = consonants.find(c);
+        it = consonants.find(letter);
         if (it == consonants.end() ){
             stringOut = "Invalid symbol: not a letter\n";
         }else{
