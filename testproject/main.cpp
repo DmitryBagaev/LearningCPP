@@ -4,7 +4,7 @@
 
 using namespace std;
 
-enum LetterResult{Noletter, Vowel, Consonant}; //Здесь же заглавные буквы приняты?
+enum LetterResult{NoLetter, Vowel, Consonant};
 
 LetterResult qLetterType (char letter);
 
@@ -19,7 +19,7 @@ int main ()
     } else {
         char letter = inputString[0];
         switch(qLetterType(letter)){
-        case Noletter:
+        case NoLetter:
             cout << "Not a letter: " << letter << "\n";
             break;
         case Vowel:
@@ -43,8 +43,10 @@ LetterResult qLetterType (char letter){
     if ( it == vowels.end() ){
         it = consonants.find(letter);
         if (it == consonants.end() )
-            return Noletter;
+            return NoLetter;
         else
             return Consonant;
-    } else {return Vowel;}
+    } else {
+        return Vowel;
+    }
 }
