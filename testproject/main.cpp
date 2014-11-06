@@ -25,10 +25,8 @@ string qLetterType (char letter){
 
     string stringOut;
 
-    char vowelsArray[6] = {'a','e','i','o','u','y'};
-    char consonantArray[20] = {'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z'};
-    set <char> vowels(vowelsArray,vowelsArray+6);
-    set <char> consonants(consonantArray,consonantArray+20);
+    set <char> vowels({'a','e','i','o','u','y'});
+    set <char> consonants({'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z'});
     set <char>::iterator it;
     it = vowels.find(letter);
     if ( it == vowels.end() ){
