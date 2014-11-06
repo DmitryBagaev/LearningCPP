@@ -42,7 +42,9 @@ letterResult qLetterType (char letter){
     it = vowels.find(letter);
     if ( it == vowels.end() ){
         it = consonants.find(letter);
-        if (it == consonants.end() ) return NOLETTER;
-        else return CONSONANT;
+        if (it == consonants.end() )
+            return NOLETTER;
+        else
+            return CONSONANT;
     } else {return VOWEL;}
 }
