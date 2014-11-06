@@ -4,9 +4,9 @@
 
 using namespace std;
 
-enum letterResult{Noletter, Vowel, Consonant}; //Здесь же заглавные буквы приняты?
+enum LetterResult{Noletter, Vowel, Consonant}; //Здесь же заглавные буквы приняты?
 
-letterResult qLetterType (char letter);
+LetterResult qLetterType (char letter);
 
 int main ()
 {
@@ -34,7 +34,7 @@ int main ()
     return 0;
 }
 
-letterResult qLetterType (char letter){
+LetterResult qLetterType (char letter){
 
     set <char> vowels({'a','e','i','o','u','y'});
     set <char> consonants({'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z'});
