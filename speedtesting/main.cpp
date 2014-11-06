@@ -8,6 +8,7 @@ const long n=10000000;
 
 using namespace std;
 
+long timeReturn(long timeEnd, long timeStart);
 template <typename T> long creating(T container);
 template <typename T> long deletingEnd(T container);
 template <typename T> long addingEnd(T container);
@@ -17,28 +18,27 @@ template <typename T> long addingFront(T container);
 int main()
 {
     vector <long> testVector(n);
-    //    vector< int >::iterator it;
     cout << "Vector:\n";
 
-    cout << "Creating time: " << creating(testVector) << " mcs\n";
-    cout << "Deleting last element time: " << deletingEnd(testVector) << " mcs\n";
-    cout << "Adding last element time: " << addingEnd(testVector) << " mcs\n";
+    creating(testVector);
+    deletingEnd(testVector);
+    addingEnd(testVector);
 
-    list <long> testList(n);
-    cout << "\nList:\n";
+    /*    list <long> testList(n);
+cout << "\nList:\n";
 
-    //cout << "Creating time: " << creating(testList) << " mcs\n";
-    cout << "Deleting last element time: " << deletingEnd(testList) << " mcs\n";
-    cout << "Adding last element time: " << addingEnd(testList) << " mcs\n";
-
+//creating(testList);
+deletingEnd(testList);
+addingEnd(testList);
+*/
     deque <long> testDeque(n);
     cout << "\nDeque:\n";
 
-    cout << "Creating time: " << creating(testDeque) << " mcs\n";
-    cout << "Deleting last element time: " << deletingEnd(testDeque) << " mcs\n";
-    cout << "Adding last element time: " << addingEnd(testDeque) << " mcs\n";
-    cout << "Deleting first element time: " << deletingFront(testDeque) << " mcs\n";
-        cout << "Adding first element time: " << addingFront(testDeque) << " mcs\n";
+    creating(testDeque);
+    deletingEnd(testDeque);
+    addingEnd(testDeque);
+    deletingFront(testDeque);
+    addingFront(testDeque);
 
     return 0;
 }
@@ -49,6 +49,7 @@ template <typename T> long creating(T container)
     for (int i = 0; i<n; i++ )
         container[i] = i;
     long timeEnd = clock();
+    cout << "Creating time: " << timeReturn(timeEnd, timeStart) << " mu\n";
     return timeEnd - timeStart;
 }
 
@@ -57,6 +58,7 @@ template <typename T> long deletingEnd(T container)
     long timeStart = clock();
     container.pop_back();
     long timeEnd = clock();
+    cout << "Deleting last element time: " << timeReturn(timeEnd, timeStart) << " mu\n";
     return timeEnd - timeStart;
 }
 
@@ -65,6 +67,7 @@ template <typename T> long addingEnd(T container)
     long timeStart = clock();
     container.push_back(999999);
     long timeEnd = clock();
+    cout << "Adding last element time: " << timeReturn(timeEnd, timeStart) << " mu\n";
     return timeEnd - timeStart;
 }
 
@@ -73,6 +76,7 @@ template <typename T> long deletingFront(T container)
     long timeStart = clock();
     container.pop_front();
     long timeEnd = clock();
+    cout << "Deleting first element time: " << timeReturn(timeEnd, timeStart) << " mu\n";
     return timeEnd - timeStart;
 }
 
@@ -81,5 +85,12 @@ template <typename T> long addingFront(T container)
     long timeStart = clock();
     container.push_front(1);
     long timeEnd = clock();
+    cout << "Adding first element time: " << timeReturn(timeEnd, timeStart) << " mu\n";
     return timeEnd - timeStart;
+}
+
+long timeReturn(long timeEnd, long timeStart)
+{
+    return 1000000*(timeEnd-timeStart)/CLOCKS_PER_SEC;
+
 }
