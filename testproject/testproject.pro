@@ -17,4 +17,3 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp
-SOURCES += examples.cpp
