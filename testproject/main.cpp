@@ -4,7 +4,9 @@
 
 using namespace std;
 
-string qLetterType (char letter);
+enum {NOLETTER, VOWEL, CONSONANT}; //Здесь же заглавные буквы приняты?
+
+int qLetterType (char letter);
 
 int main ()
 {
@@ -16,14 +18,23 @@ int main ()
         cout << "Invalid number of symbols\n";
     } else {
         char letter = inputString[0];
-        cout << qLetterType(letter);
+        switch(qLetterType(letter)){
+        case NOLETTER:
+            cout << "Not a letter\n";
+            break;
+        case VOWEL:
+            cout << "Vowel\n";
+            break;
+        case CONSONANT:
+            cout << "Consonant\n";
+            break;
+        };
+
     }
     return 0;
 }
 
-string qLetterType (char letter){
-
-    string stringOut;
+int qLetterType (char letter){
 
     set <char> vowels({'a','e','i','o','u','y'});
     set <char> consonants({'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z'});
@@ -32,13 +43,11 @@ string qLetterType (char letter){
     if ( it == vowels.end() ){
         it = consonants.find(letter);
         if (it == consonants.end() ){
-            stringOut = "Invalid symbol: not a letter\n";
+            return 0;
         }else{
-            stringOut = "Consonant\n";
+            return 2;
         }
     }else{
-        stringOut = "Vowel\n";
+        return 1;
     }
-
-    return stringOut;
 }
