@@ -125,7 +125,7 @@ template <typename T> long deletingFront(T &container)
     long timeStart = clock();
     container.pop_front();
     long timeEnd = clock();
-     cout << "Deleting first element time: " << timeReturn(timeEnd, timeStart) << " mu\n";
+    cout << "Deleting first element time: " << timeReturn(timeEnd, timeStart) << " mu\n";
     return timeEnd - timeStart;
 }
 
