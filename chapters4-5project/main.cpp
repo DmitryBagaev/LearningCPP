@@ -93,11 +93,12 @@ int main()
     trainPath rPush;
     for (int i = 0; i < stackSize; i++)
     {
-        rPush = (trainPath)(rand() % 2+1);
+        rPush = (trainPath)(rand() % 2 + 1);
         st.push(rPush);
     }
 
     st.show();
+
     Train trainLeft;
     Train trainRight;
 
@@ -111,6 +112,7 @@ int main()
     for (int i = 0; i < h; i++)
         cout << trainLeft.trainDirection[i] << " ";
     cout << endl;
+
     cout << "Right content:" << endl;
     h = trainRight.trainDirection.size();
     for (int i = 0; i < h; i++)
