@@ -15,8 +15,8 @@ template <class T> void sort (T arr, int size);
 
 int main()
 {
-    oneDimension(15);
-    //twoDimensionsWithPointers(10);
+    //oneDimension(15);
+    twoDimensionsWithPointers(10);
     //trainStructure(6);
     return 0;
 }
@@ -107,6 +107,9 @@ void twoDimensionsWithPointers(int size)
         }
     }
     cout << "Sum of elements above the main diagonal: " << sum << endl;
+
+    for (int i = 0; i < size + 2; i++)
+        delete arr[i];
     delete[] arr;
 }
 
