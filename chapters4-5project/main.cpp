@@ -13,72 +13,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-
-using namespace std;
-
-enum trainPath {Left = 1, Right};
-
-class Train
-{
-public:
-    Train():trainDirection(0),top(0){ }
-    vector<trainPath> trainDirection;
-    int top;
-};
-
-class Stack
-{
-public:
-    Stack(int& stackSize): content(stackSize), top(0) { }
-private:
-    vector <trainPath> content;
-    int top;
-public:
-    void push(trainPath &wag);
-    void pop(Train& leftTrain, Train& rightTrain);
-    void show();
-    int getTop();
-};
-
-
-void Stack::pop(Train& leftTrain, Train& rightTrain)
-{
-    trainPath tr = content[--top];;
-    content.pop_back();
-    switch(tr)
-    {
-    case Left:
-        leftTrain.top++;
-        leftTrain.trainDirection.push_back(Left);
-        break;
-    case Right:
-        rightTrain.top++;
-        rightTrain.trainDirection.push_back(Right);
-        break;
-    default:
-        cout << "Mistake";
-        break;
-    }
-}
-
-void Stack::push(trainPath& wag)
-{
-    content[top++] = wag;
-}
-
-void Stack::show()
-{
-    cout << "Stack content:" << endl;
-    int h = content.size();
-    for (int i = 0; i < h; i++)
-        cout << content[i] << " ";
-    cout << endl;
-}
-
-int Stack::getTop()
-{
-    return top;
-}
+#include "stack.h"
 
 int main()
 {
@@ -89,7 +24,7 @@ int main()
     cin >> stackSize;
     cout << endl;
 
-    Stack st(stackSize);
+    Stack st;
     trainPath rPush;
     for (int i = 0; i < stackSize; i++)
     {
