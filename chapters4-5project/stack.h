@@ -3,29 +3,22 @@
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-enum trainPath {Left = 1, Right};
-
-class Train
-{
-public:
-    Train();
-    vector<trainPath> trainDirection;
-    int top;
-};
-
+template <class T>
 class Stack
 {
 public:
     Stack();
+    Stack(int stackSize);
 private:
-    vector <trainPath> content;
+        int size;
+    vector <T> content;
     int top;
 public:
-    void push(trainPath &wag);
-    void pop(Train& leftTrain, Train& rightTrain);
-    void show();
+    void push(T wag);
+    T pop();
     int getTop();
 };
 

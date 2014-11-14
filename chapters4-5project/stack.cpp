@@ -1,48 +1,29 @@
-#include <iostream>
-#include <vector>
 #include "stack.h"
 
-    Train::Train():trainDirection(0),top(0){ }
+template <class T>
+Stack <T>::Stack(): size(0), content(size), top(0) { }
 
-      Stack::Stack(): content(0), top(0) { }
+template <class T>
+Stack <T>::Stack(int stackSize): size(stackSize), content(size), top(0) { }
 
-void Stack::pop(Train& leftTrain, Train& rightTrain)
+template <class T>
+T Stack <T>::pop()
 {
-    trainPath tr = content[--top];;
+    T h = content[--top];;
     content.pop_back();
-    switch(tr)
-    {
-    case Left:
-        leftTrain.top++;
-        leftTrain.trainDirection.push_back(Left);
-        break;
-    case Right:
-        rightTrain.top++;
-        rightTrain.trainDirection.push_back(Right);
-        break;
-    default:
-        cout << "Mistake";
-        break;
-    }
+    return h;
 }
 
-void Stack::push(trainPath& wag)
+template <class T>
+void Stack <T>::push(T wag)
 {
-top++;
+    top++;
     content.push_back(wag);
 
 }
 
-void Stack::show()
-{
-    cout << "Stack content:" << endl;
-    int h = content.size();
-    for (int i = 0; i < h; i++)
-        cout << content[i] << " ";
-    cout << endl;
-}
-
-int Stack::getTop()
+template <class T>
+int Stack <T>::getTop()
 {
     return top;
 }

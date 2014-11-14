@@ -11,9 +11,9 @@
 //-------------------------------------------------
 
 #include <iostream>
-#include <vector>
 #include <cmath>
 #include "stack.h"
+#include "wagon.h"
 
 int main()
 {
@@ -23,36 +23,58 @@ int main()
     cout << "Stacksize: ";
     cin >> stackSize;
     cout << endl;
-
-    Stack st;
-    trainPath rPush;
-    for (int i = 0; i < stackSize; i++)
+    if (!stackSize)
     {
-        rPush = (trainPath)(rand() % 2 + 1);
-        st.push(rPush);
+        cout << "Unvalid input";
     }
-
-    st.show();
-
-    Train trainLeft;
-    Train trainRight;
-
-    for (int i = 0; i < stackSize; i++)
+    else
     {
-        st.pop(trainLeft,trainRight);
+
+        Stack <Wagon> st();
+        vector <trainPath> leftTrain;
+        vector <trainPath> rightTrain;
+
+        Wagon wag;
+
+        cout << "Stack content:" << endl;
+
+        for (int i = 0; i < stackSize; i++)
+        {
+
+            wag.path = (trainPath)(rand() % 2 + 1);
+            st.push(wag);
+            cout << wag.path << " ";
+        }
+        cout <<endl;
+        for (int i = 0; i < stackSize; i++)
+        {
+            Wagon wag = st.pop();
+
+            switch (wag.path) {
+            case Left:
+                leftTrain.push_back(wag.path);
+                break;
+            case Right:
+                rightTrain.push_back(wag.path);
+                break;
+            default:
+                cout << "Mistake!";
+                break;
+            }
+        }
+        cout << "Left train" << endl;
+        for (int i = leftTrain.size()-1; i >=0; i--)
+        {
+            cout << leftTrain[i] << " ";
+        }
+        cout << endl;
+
+        cout << "Right train" << endl;
+        for (int i = rightTrain.size()-1; i >= 0; i--)
+        {
+            cout << rightTrain[i] << " ";
+        }
+        cout << endl;
     }
-
-    cout << "Left content:" << endl;
-    int h = trainLeft.trainDirection.size();
-    for (int i = 0; i < h; i++)
-        cout << trainLeft.trainDirection[i] << " ";
-    cout << endl;
-
-    cout << "Right content:" << endl;
-    h = trainRight.trainDirection.size();
-    for (int i = 0; i < h; i++)
-        cout << trainRight.trainDirection[i] << " ";
-    cout << endl;
-
     return 1;
 }
