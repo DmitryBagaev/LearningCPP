@@ -30,7 +30,7 @@ int main()
     else
     {
 
-        Stack <Wagon> st();
+        Stack<Wagon> st = Stack(stackSize);
         vector <trainPath> leftTrain;
         vector <trainPath> rightTrain;
 
@@ -45,10 +45,10 @@ int main()
             st.push(wag);
             cout << wag.path << " ";
         }
-        cout <<endl;
+        cout << endl;
         for (int i = 0; i < stackSize; i++)
         {
-            Wagon wag = st.pop();
+            wag = st.pop();
 
             switch (wag.path) {
             case Left:
