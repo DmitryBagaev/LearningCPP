@@ -16,7 +16,5 @@ CONFIG   += c++11
 TEMPLATE = app
 
 SOURCES += main.cpp
-SOURCES += stack.cpp
 SOURCES += stack.h
 SOURCES += wagon.h
-SOURCES += wagon.cpp

@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 #include "stack.h"
 #include "wagon.h"
 
@@ -30,9 +31,9 @@ int main()
     else
     {
 
-        Stack<Wagon> st = Stack(stackSize);
-        vector <trainPath> leftTrain;
-        vector <trainPath> rightTrain;
+        Stack <Wagon> stackDepo;
+        vector <Wagon> leftTrain;
+        vector <Wagon> rightTrain;
 
         Wagon wag;
 
@@ -42,20 +43,20 @@ int main()
         {
 
             wag.path = (trainPath)(rand() % 2 + 1);
-            st.push(wag);
+            stackDepo.push(wag);
             cout << wag.path << " ";
         }
         cout << endl;
         for (int i = 0; i < stackSize; i++)
         {
-            wag = st.pop();
+            wag = stackDepo.pop();
 
             switch (wag.path) {
             case Left:
-                leftTrain.push_back(wag.path);
+                leftTrain.push_back(wag);
                 break;
             case Right:
-                rightTrain.push_back(wag.path);
+                rightTrain.push_back(wag);
                 break;
             default:
                 cout << "Mistake!";
@@ -65,14 +66,14 @@ int main()
         cout << "Left train" << endl;
         for (int i = leftTrain.size()-1; i >=0; i--)
         {
-            cout << leftTrain[i] << " ";
+            cout << leftTrain[i].path << " ";
         }
         cout << endl;
 
         cout << "Right train" << endl;
         for (int i = rightTrain.size()-1; i >= 0; i--)
         {
-            cout << rightTrain[i] << " ";
+            cout << rightTrain[i].path << " ";
         }
         cout << endl;
     }
