@@ -18,7 +18,7 @@ private:
     int size;
     vector <T> content;
 public:
-    void push(T wag);
+    void push(T element);
     T pop();
 };
 template <class T>
@@ -37,11 +37,9 @@ T Stack <T>::pop()
 }
 
 template <class T>
-void Stack <T>::push(T wag)
+void Stack <T>::push(T element)
 {
-
-    content.push_back(wag);
-
+    content.push_back(element);
 }
 
 #endif

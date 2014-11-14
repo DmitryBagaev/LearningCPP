@@ -3,11 +3,12 @@
 #pragma once
 using namespace std;
 
-enum trainPath {Left = 1, Right};
+enum trainPath {Depo, Left, Right};
 
 class Wagon
 {
 public:
+    Wagon():path(Depo){}
     trainPath path;
 };
 
