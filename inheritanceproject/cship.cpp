@@ -19,3 +19,15 @@ string CShip::getDirection()
 {
     return direction;
 }
+
+int CShip::getX()
+{
+    cout << "Child setX" << endl;
+    return positionX;
+}
+
+int CShip::getY()
+{
+    cout << "Child setY" << endl;
+    return positionY;
+}

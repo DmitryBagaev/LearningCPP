@@ -1,39 +1,41 @@
 #include <cvehicle.h>
 
 
-void CVehicle::setX(int posX)
+void CVehicle::setX(int arg)
 {
-    positionX = posX;
+    positionX = arg;
 }
 
 int CVehicle::getX()
 {
+    cout << "Parent getX" << endl;
     return positionX;
 }
 
-void CVehicle::setY(int posY)
+void CVehicle::setY(int arg)
 {
-    positionY = posY;
+    positionY = arg;
 }
 
 int CVehicle::getY()
 {
+    cout << "Parent getY" << endl;
     return positionY;
 }
 
-void CVehicle::setPrice(int extPrice)
+void CVehicle::setPrice(long arg)
 {
-    price = extPrice;
+    price = arg;
 }
 
-int CVehicle::getPrice()
+long CVehicle::getPrice()
 {
     return price;
 }
 
-void CVehicle::setCreationTime(int time)
+void CVehicle::setCreationTime(int arg)
 {
-    creationTime = time;
+    creationTime = arg;
 }
 
 int CVehicle::getCreationTime()
@@ -41,9 +43,9 @@ int CVehicle::getCreationTime()
     return creationTime;
 }
 
-void CVehicle::setSpeed(int extSpeed)
+void CVehicle::setSpeed(int arg)
 {
-    speed = extSpeed;
+    speed = arg;
 }
 
 int CVehicle::getSpeed()

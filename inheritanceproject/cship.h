@@ -14,5 +14,7 @@ public:
     int getPassangers();
     void setDirection(string dir);
     string getDirection();
+    int getX();
+    int getY();
 };
 #endif

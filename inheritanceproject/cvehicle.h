@@ -9,20 +9,20 @@ class CVehicle{
 public:
     int positionX;
     int positionY;
-    int price;
+    long price;
     int creationTime;
     int speed;
 
     CVehicle(): positionX(0), positionY(0), price(0), creationTime (0), speed(0){}
-    virtual void setX(int posX);
-    virtual int getX();
-    virtual void setY(int posY);
+    void setX(int arg);
+    int getX();
+    void setY(int arg);
     virtual int getY();
-    virtual void setPrice(int extPrice);
-    virtual int getPrice();
-    virtual void setCreationTime(int time);
-    virtual int getCreationTime();
-    virtual void setSpeed(int extSpeed);
-    virtual int getSpeed();
+    void setPrice(long arg);
+    long getPrice();
+    void setCreationTime(int arg);
+    int getCreationTime();
+    void setSpeed(int arg);
+    int getSpeed();
 };
 #endif

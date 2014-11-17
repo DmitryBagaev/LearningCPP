@@ -21,7 +21,7 @@ int main()
     CCar car;
     CPlane plane;
     CShip ship;
-
+/*
     string inputS;
     int inputI;
 
@@ -115,6 +115,14 @@ int main()
         cout << "Wrong input" << endl;
         break;
     }
+*/
+
+    CVehicle *Vehicle = new CVehicle();
+    CVehicle *Ship = new CShip();
+    Vehicle->getX();
+    Vehicle->getY();
+    Ship->getX();
+    Ship->getY();
 
     return 0;
 }
