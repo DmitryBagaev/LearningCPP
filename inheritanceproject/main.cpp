@@ -18,35 +18,34 @@
 
 int main()
 {
-
     CCar car;
     CPlane plane;
     CShip ship;
 
-    string s;
+    string inputS;
+    int inputI;
 
-    int h;
     cout << "To verify methods input: 1 for car, 2 for plane, 3 for ship" << endl << "Input: ";
-    cin >> h;
-    switch (h) {
+    cin >> inputI;
+    switch (inputI) {
     case 1:
         cout << "Car" << endl;
         cout << "Input position: " << endl << "X = ";
-        cin >> h;
-        car.setPositionX(h);
+        cin >> inputI;
+        car.setX(inputI);
         cout << "Y = ";
-        cin >> h;
-        car.setPositionY(h);
+        cin >> inputI;
+        car.setY(inputI);
         cout << "Input price: ";
-        cin >> h;
-        car.setPrice(h);
+        cin >> inputI;
+        car.setPrice(inputI);
         cout << "Input speed: ";
-        cin >> h;
-        car.setSpeed(h);
+        cin >> inputI;
+        car.setSpeed(inputI);
         cout << "Input year of manufacture: ";
-        cin >> h;
-        car.setCreationTime(h);
-        cout << "Position: " << car.getPositionX() << " - " << car.getPositionY() << endl
+        cin >> inputI;
+        car.setCreationTime(inputI);
+        cout << "Position: " << car.getX() << " - " << car.getY() << endl
              << "Price: " << car.getPrice() << endl
              << "Speed " << car.getSpeed() << endl
              << "Year of manifacture: " << car.getCreationTime() << endl;
@@ -54,27 +53,27 @@ int main()
     case 2:
         cout << "Plane" << endl;
         cout << "Input position: " << endl << "X = ";
-        cin >> h;
-        plane.setPositionX(h);
+        cin >> inputI;
+        plane.setX(inputI);
         cout << "Y = ";
-        cin >> h;
-        plane.setPositionY(h);
+        cin >> inputI;
+        plane.setY(inputI);
         cout << "Input price: ";
-        cin >> h;
-        plane.setPrice(h);
+        cin >> inputI;
+        plane.setPrice(inputI);
         cout << "Input speed: ";
-        cin >> h;
-        plane.setSpeed(h);
+        cin >> inputI;
+        plane.setSpeed(inputI);
         cout << "Input year of manufacture: ";
-        cin >> h;
-        plane.setCreationTime(h);
+        cin >> inputI;
+        plane.setCreationTime(inputI);
         cout << "Input number of passangers: ";
-        cin >> h;
-        plane.setPassangers(h);
+        cin >> inputI;
+        plane.setPassangers(inputI);
         cout << "Input plane height: ";
-        cin >> h;
-        plane.setHeight(h);
-        cout << "Position: " << plane.getPositionX() << " - " << plane.getPositionY() << endl
+        cin >> inputI;
+        plane.setHeight(inputI);
+        cout << "Position: " << plane.getX() << " - " << plane.getY() << endl
              << "Price: " << plane.getPrice() << endl
              << "Speed " << plane.getSpeed() << endl
              << "Year of manifacture: " << plane.getCreationTime() << endl
@@ -84,27 +83,27 @@ int main()
     case 3:
         cout << "Ship" << endl;
         cout << "Input position: " << endl << "X = ";
-        cin >> h;
-        ship.setPositionX(h);
+        cin >> inputI;
+        ship.setX(inputI);
         cout << "Y = ";
-        cin >> h;
-        ship.setPositionY(h);
+        cin >> inputI;
+        ship.setY(inputI);
         cout << "Input price: ";
-        cin >> h;
-        ship.setPrice(h);
+        cin >> inputI;
+        ship.setPrice(inputI);
         cout << "Input speed: ";
-        cin >> h;
-        ship.setSpeed(h);
+        cin >> inputI;
+        ship.setSpeed(inputI);
         cout << "Input year of manufacture: ";
-        cin >> h;
-        ship.setCreationTime(h);
+        cin >> inputI;
+        ship.setCreationTime(inputI);
         cout << "Input number of passangers: ";
-        cin >> h;
-        ship.setPassangers(h);
+        cin >> inputI;
+        ship.setPassangers(inputI);
         cout << "Input direction: ";
-        cin >> s;
-        ship.setDirection(s);
-        cout << "Position: " << ship.getPositionX() << " - " << ship.getPositionY() << endl
+        cin >> inputS;
+        ship.setDirection(inputS);
+        cout << "Position: " << ship.getX() << " - " << ship.getY() << endl
              << "Price: " << ship.getPrice() << endl
              << "Speed " << ship.getSpeed() << endl
              << "Year of manifacture: " << ship.getCreationTime() << endl

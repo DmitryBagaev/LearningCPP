@@ -1,22 +1,22 @@
 #include <cvehicle.h>
 
 
-void CVehicle::setPositionX(int posX)
+void CVehicle::setX(int posX)
 {
     positionX = posX;
 }
 
-int CVehicle::getPositionX()
+int CVehicle::getX()
 {
     return positionX;
 }
 
-void CVehicle::setPositionY(int posY)
+void CVehicle::setY(int posY)
 {
     positionY = posY;
 }
 
-int CVehicle::getPositionY()
+int CVehicle::getY()
 {
     return positionY;
 }
