@@ -9,7 +9,7 @@
  * • определяет количество слов в тексте;
  * • определяет количество слов в тексте, у которых первый и последний
  * символы совпадают.
- * Вывод осуществить с помощью стандартных потоков, манип. и форм. методов.
+ * Вывод осуществить с помощью стандартных потоков.
 */
 //-------------------------------------------------------------
 #include <iostream>
@@ -21,6 +21,8 @@ using namespace std;
 const int n = 20;
 
 void fileOutput(string strText[]);
+void wordCount(string strText[]);
+void wordEqualSidesCount(string strText[]);
 
 int main()
 {
@@ -39,21 +41,31 @@ int main()
         getline(fileInput,strText[i]);
         i++;
     }
+
     fileOutput(strText);
-    //--------------------Вывод текста на экран-----------------------
-    /*
-    i = 0;
+    wordCount(strText);
+    wordEqualSidesCount(strText);
+
+    fileInput.close();
+
+    return 1;
+}
+
+void fileOutput(string strText[])
+{
+    int i = 0;
     while (strText[i] != "")
     {
         cout << strText[i] << endl;
         i++;
     }
-*/
-    //------------------Подсчёт количества слов в тексте--------------
+}
 
+void wordCount(string strText[])
+{
     int wordCount = 0;
 
-    for (i = 0; i < n; i++){
+    for (int i = 0; i < n; i++){
         if (!strText[i].empty()){
             if (strText[i][0] != ' ')
                 wordCount += 1;
@@ -71,11 +83,13 @@ int main()
         }
     }
     cout << "Words in the text file = " << wordCount << endl;
+}
 
-    //------------------Подсчёт количества слов с одинаковыми буквами на концах--------------
+void wordEqualSidesCount(string strText[])
+{
     int wordEqualSidesCount = 0;
 
-    for (i = 0; i < n; i++){
+    for (int i = 0; i < n; i++){
         if (!strText[i].empty()){
 
             if (strText[i][0] != ' ')
@@ -105,18 +119,4 @@ int main()
     }
 
     cout << "Words with equal sides in the text file = " << wordEqualSidesCount << endl;
-
-    fileInput.close();
-
-    return 1;
-}
-
-void fileOutput(string strText[])
-{
-    int i = 0;
-    while (strText[i] != "")
-    {
-        cout << strText[i] << endl;
-        i++;
-    }
 }
