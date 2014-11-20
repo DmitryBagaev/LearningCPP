@@ -50,23 +50,62 @@ int main()
     int wordCount = 0;
 
     for (i = 0; i < n; i++){
-
-        if (strText[0][0] != ' ')
-            wordCount += 1;
-
-        int pos1=0;
-        int pos2=0;
-        while ((pos2 != strText[i].find_last_of(' ')) && (pos1 != strText[i].find_last_of(' ')) )
-        {
-            pos1 = strText[i].find_first_of(' ', pos2);
-            pos2 = strText[i].find_first_of(' ', pos1 + 1);
-            if ((pos1 +1) != pos2)
+        if (!strText[i].empty()){
+            if (strText[i][0] != ' ')
+                wordCount += 1;
+            int pos1 = 0;
+            int pos2 = 0;
+            while ((pos2 != strText[i].find_last_of(' ')) && (pos1 != strText[i].find_last_of(' ')) )
+            {
+                pos1 = strText[i].find_first_of(' ', pos2);
+                pos2 = strText[i].find_first_of(' ', pos1 + 1);
+                if (((pos1 + 1) != pos2) && ((pos2 + 1) != pos1))
+                    wordCount += 1;
+            }
+            if (strText[i][strText[i].length() - 1] != ' ')
                 wordCount += 1;
         }
     }
-    cout << "Words = " << wordCount << endl;
+    cout << "Words in the text file = " << wordCount << endl;
 
+//------------------Подсчёт количества слов с одинаковыми буквами на концах--------------
+    int wordEqualSidesCount = 0;
 
+    for (i = 0; i < n; i++){
+        if (!strText[i].empty()){
+            if (strText[i][0] != ' ')
+                if (strText[i][0] == strText[i][strText[i].find_first_of(' ')-1])
+                    wordEqualSidesCount += 1;
+            int pos1 = 0;
+            int pos2 = 0;
+            while ( (pos2 != strText[i].find_last_of(' ')) && (pos1 != strText[i].find_last_of(' ')) )
+            {
+                pos1 = strText[i].find_first_of(' ', pos2);
 
+                if (((pos2 + 1) == pos1))
+                    if (strText[i][pos2+1] == strText[i][pos1-1]){
+                        wordEqualSidesCount += 1;
+                        for (int j = pos2 + 1; j < pos1; j++)
+                            cout << strText[i][j];
+                        cout << endl;
+                    }
+                pos2 = strText[i].find_first_of(' ', pos1 + 1);
+
+                if (((pos1 + 1) != pos2))
+                    if (strText[i][pos1+1] == strText[i][pos2-1]){
+                        wordEqualSidesCount += 1;
+                        cout << pos1 << "&";
+                        for (int j = pos1 + 1; j < pos2; j++)
+                            cout << strText[i][j];
+                        cout << "&" << pos2 << "=" << wordEqualSidesCount << endl;
+                    }
+            }
+            if (strText[i][strText[i].length()-1] != ' ')
+                if ( strText[i][strText[i].find_last_of(' ') + 1] == strText[i][strText[i].length()-1])
+                    wordEqualSidesCount += 1;
+        }
+    }
+
+    cout << "Words with equal sides in the text file = " << wordEqualSidesCount << endl;
     return 1;
 }
