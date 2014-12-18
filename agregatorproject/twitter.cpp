@@ -80,8 +80,8 @@ QString Twitter::writeTwitsInFile()
         QtJson::JsonObject result = QtJson::parse(jsonTwits[iter]).toMap();
         QtJson::JsonObject userInfo = result["user"].toMap();
 
-        textOfTwits += "Date of publication: " + result["created_at"].toString() +"\n";
-        textOfTwits +=  ": " + userInfo["name"].toString() +"\n";
+        textOfTwits += "created_at: " + result["created_at"].toString() +"\n";
+        textOfTwits +=  "name: " + userInfo["name"].toString() +"\n";
         textOfTwits += "text: " + result["text"].toString() +"\n";
         textOfTwits += "\n";
         iter++;
