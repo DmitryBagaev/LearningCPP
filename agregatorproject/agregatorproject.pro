@@ -19,10 +19,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
             file.cpp \
-            twitter.cpp
-
+            twitter.cpp \
+            json.cpp
 HEADERS += file.h \
-            twitter.h
+            twitter.h \
+            json.h
+
 
 
 

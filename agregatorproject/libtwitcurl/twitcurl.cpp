@@ -497,12 +497,14 @@ bool twitCurl::retweetById( std::string& statusId )
 *--*/
 bool twitCurl::timelineHomeGet( std::string sinceId )
 {
+    std::cout << "lalalalla";
     std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
                            twitterDefaults::TWITCURL_HOME_TIMELINE_URL +
                            twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType];
     if( sinceId.length() )
     {
-        buildUrl += twitCurlDefaults::TWITCURL_URL_SEP_QUES + twitCurlDefaults::TWITCURL_SINCEID + sinceId;
+        buildUrl += twitCurlDefaults::TWITCURL_URL_SEP_QUES + "count=5&" + twitCurlDefaults::TWITCURL_SINCEID + sinceId;
+        std::cout << "lalalalla";
     }
 
     /* Perform GET */

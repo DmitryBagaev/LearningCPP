@@ -1,10 +1,13 @@
 #include "twitter.h"
 
-void Twitter::setPersonalData(std::string userID, std::string username, std::string password)
+void Twitter::setPersonalData(QString userID, QString username, QString password)
 {
-    setID(userID);
-    setUsername(username);
-    setPassword(password);
+    std::string userIDstd = userID.toStdString();
+    std::string usernamestd = username.toStdString();
+    std::string passwordstd = password.toStdString();
+    setID(userIDstd);
+    setUsername(usernamestd);
+    setPassword(passwordstd);
 }
 
 void Twitter::setID(std::string userID)
@@ -35,13 +38,53 @@ void Twitter::authorisingApp()
 
 void Twitter::makeRequest()
 {
-    objTwit.timelineHomeGet(userID);
     std::string outWebResp;
 
+    objTwit.timelineHomeGet(userID);
     objTwit.getLastWebResponse(outWebResp);
-    std::cout << outWebResp;
-    if (!outWebResp.length())
+    outData = QString::fromStdString(outWebResp);
+}
+
+void Twitter::parseStrToJson()
+{
+    int position(1);
+    int beginningPosition(0);
+    int twitLength;
+    int iter(0);
+
+    outData.remove(0,1);
+    outData.remove(outData.length()-1,1);
+
+    while (position < (outData.length()) )
     {
-        qDebug() << "Error";
+        if ( (outData[position] == '}') && ( (outData[position+1]== ',')&& (outData[position+2] == '{'&& (outData[position+3] == '"')) ) )
+        {
+            twitLength = position + 1 - beginningPosition;
+            jsonTwits[iter] = outData.mid(beginningPosition, twitLength);
+            beginningPosition = position + 2;
+            iter++;
+        }
+        position++;
     }
+}
+
+QString Twitter::writeTwitsInFile()
+{
+
+    QString textOfTwits("");
+    int iter(0);
+
+    while(!jsonTwits[iter].isEmpty())
+    {
+
+        QtJson::JsonObject result = QtJson::parse(jsonTwits[iter]).toMap();
+        QtJson::JsonObject userInfo = result["user"].toMap();
+
+        textOfTwits += "created_at: " + result["created_at"].toString() +"\n";
+        textOfTwits +=  "name: " + userInfo["name"].toString() +"\n";
+        textOfTwits += "text: " + result["text"].toString() +"\n";
+        textOfTwits += "\n";
+        iter++;
+    }
+    return textOfTwits;
 }
