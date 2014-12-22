@@ -1,6 +1,5 @@
 #include "twitter.h"
 #include "twitcurl.h"
-//#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 QT_USE_NAMESPACE
