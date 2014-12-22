@@ -5,20 +5,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 QT_USE_NAMESPACE
-
-void callme()
-{
-    qDebug() << "11";
-}
 
 int main(int argc, char *argv[])
 {
     QApplication appl(argc, argv);
 
     MainWindow window;
-   // window.getConnectionWithButtons();
     window.show();
 
     Twitter agregator;

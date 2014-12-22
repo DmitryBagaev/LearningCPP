@@ -15,11 +15,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::getConnectionWithButtons()
-{
-    QObject::connect( ui->pushButton_3, &QPushButton::clicked, this, &MainWindow::getUsernameAndPassword);
-}
-
 void MainWindow::getUsernameAndPassword()
 {
     username = ui->lineEdit->text();

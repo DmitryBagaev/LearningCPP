@@ -1,5 +1,12 @@
 #include "twitter.h"
 
+Twitter::Twitter():consumerKey("gHgu7FSS5Oo4x2eSekIEvrsHt"), consumerSecret("jMQD7I2ovMuZFkZNQEvh3yx1FB2omOKXOlTgg6tliOvVDeeKzY"),
+    userID("2891789529"), jsonTwits(5000)
+{
+        QObject::connect(this, &Twitter::userDataIsSet, this, &Twitter::authorise);
+}
+
+
 void Twitter::authorise()
 {
     this->authorisingApp();
