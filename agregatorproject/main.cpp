@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QApplication appl(argc, argv);
 
     MainWindow window;
-    window.getConnectionWithButtons();
+   // window.getConnectionWithButtons();
     window.show();
 
     Twitter agregator;

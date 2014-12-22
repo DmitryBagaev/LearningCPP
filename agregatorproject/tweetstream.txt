@@ -1,3 +1,32 @@
+Date of publication: 
+Author: 
+text: 
+
+Date of publication: 
+Author: 
+text: Курс
+
+Date of publication: 
+Author: 
+text: кризис
+
+Date of publication: 
+Author: 
+text: Неформат
+
+Date of publication: 
+Author: 
+text: Задор
+
+Date of publication: Mon Dec 22 08:02:26 +0000 2014
+Author: Михаил Задорнов
+text: #lj Падение рубля http://t.co/meznFetINM
+
+Date of publication: Mon Dec 22 07:50:40 +0000 2014
+Author: Телеканал ДОЖДЬ
+text: Журналисты «Первого канала» прокомментировали сюжет о «распятом мальчике»
+http://t.co/LfHrJHrqbB http://t.co/bxb0ojQI8A
+
 Date of publication: Mon Dec 22 05:00:17 +0000 2014
 Author: Телеканал ДОЖДЬ
 text: Олег Вьюгин: я подпишусь на Дождь, чтобы канал из этой маленькой комнаты мог снова переехать в большое помещение: http://t.co/8bM9Yf4rIp
@@ -69,14 +98,4 @@ text: Don’t just say you’re in pain and expect results. Describe your pain b
 Date of publication: Sun Dec 21 18:51:52 +0000 2014
 Author: Телеканал ДОЖДЬ
 text: За что в Пакистане казнили россиянина, какие проблемы у «Трансаэро», и когда вырастут цены на нефть. Итоги дня http://t.co/gO9JZ31uJi
-
-Date of publication: Sun Dec 21 18:13:40 +0000 2014
-Author: Bill Maher
-text: RT @MotherJones: Sean Penn on Sony pulling "The Interview": This sends ISIS an "invitation" http://t.co/xScr61kBFO http://t.co/0ozycdaTZF
-
-Date of publication: Sun Dec 21 18:00:20 +0000 2014
-Author: Телеканал ДОЖДЬ
-text: «Путин страшно влюблен в Европу, а она не отвечает взаимностью». Белковский и Лобков о мотивах российской политики
-
-http://t.co/udUKzY8Uqy
 

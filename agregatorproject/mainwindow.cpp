@@ -24,6 +24,6 @@ void MainWindow::getUsernameAndPassword()
 {
     username = ui->lineEdit->text();
     password = ui->lineEdit_2->text();
-    emit haveData(this);
+    emit haveData(username, password);
 }
 

@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    Ui::MainWindow *ui;
     QString password;
     QString username;
 
@@ -21,11 +22,8 @@ public:
     void getConnectionWithButtons();
     void getUsernameAndPassword();
 
-    //private:
-    Ui::MainWindow *ui;
-
 signals:
-    void haveData(MainWindow*);
+    void haveData(QString, QString);
 };
 
 #endif

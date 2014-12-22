@@ -31,13 +31,13 @@ public:
     Twitter():consumerKey("gHgu7FSS5Oo4x2eSekIEvrsHt"), consumerSecret("jMQD7I2ovMuZFkZNQEvh3yx1FB2omOKXOlTgg6tliOvVDeeKzY"),
         userID("2891789529"), jsonTwits(5000){}
     void authorise();
-    void setPersonalData (MainWindow* window);
+    void setPersonalData (QString username, QString password);
     void setUsername(std::string username);
     void setPassword(std::string password);
     void authorisingApp();
     void makeRequest();
-    void parseStrToJson();
-    QString writeTwitsInFile();
+    void parseJsonToStr();
+    QString makeStringForWritingIntoFile();
 
 signals:
     void userDataIsSet();

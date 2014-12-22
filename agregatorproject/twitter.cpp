@@ -4,18 +4,16 @@ void Twitter::authorise()
 {
     this->authorisingApp();
     this->makeRequest();
-    this->parseStrToJson();
-    finalData = this->writeTwitsInFile();
+    this->parseJsonToStr();
+    finalData = this->makeStringForWritingIntoFile();
     FileManager fileWithTwits;
     fileWithTwits.createFile();
     fileWithTwits.readMessageInFile(finalData);
 }
 
 
-void Twitter::setPersonalData(MainWindow* window)
+void Twitter::setPersonalData(QString username, QString password)
 {
-    username = window->username;
-    password = window->password;
     std::string usernamestd = username.toStdString();
     std::string passwordstd = password.toStdString();
     setUsername(usernamestd);
@@ -53,7 +51,7 @@ void Twitter::makeRequest()
     outData = QString::fromStdString(outWebResp);
 }
 
-void Twitter::parseStrToJson()
+void Twitter::parseJsonToStr()
 {
     int position(1);
     int beginningPosition(0);
@@ -76,7 +74,7 @@ void Twitter::parseStrToJson()
     }
 }
 
-QString Twitter::writeTwitsInFile()
+QString Twitter::makeStringForWritingIntoFile()
 {
 
     QString textOfTwits("");
