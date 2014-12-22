@@ -12,7 +12,7 @@ class FileManager : public QObject
     Q_OBJECT
 
 public:
-    QFile tweetsFile();
+    QFile tweetsFile;
     const QString filepass = "../agregatorproject/tweetstream.txt";
 
     void createFile();
