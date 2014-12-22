@@ -1,8 +1,6 @@
 #include "twitter.h"
-#include "file.h"
 #include "twitcurl.h"
-#include "json.h"
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 QT_USE_NAMESPACE
@@ -18,7 +16,6 @@ int main(int argc, char *argv[])
 
     QObject::connect(window.ui->pushButton_3, &QPushButton::clicked, &window, &MainWindow::getUsernameAndPassword);
     QObject::connect(&window, &MainWindow::haveData, &agregator, &Twitter::setPersonalData);
-    QObject::connect(&agregator, &Twitter::userDataIsSet, &agregator, &Twitter::authorise);
 
     return appl.exec();
 }

@@ -22,12 +22,10 @@ TEMPLATE = app
 SOURCES += main.cpp \
             file.cpp \
             twitter.cpp \
-            json.cpp \
             mainwindow.cpp
 
 HEADERS += file.h \
             twitter.h \
-            json.h \
         mainwindow.h
 
 FORMS    += mainwindow.ui

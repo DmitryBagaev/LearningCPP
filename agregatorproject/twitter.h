@@ -2,9 +2,10 @@
 #define TWITTER_HEADER
 #include "twitcurl.h"
 #include <QString>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QVector>
-#include <json.h>
-#include <mainwindow.h>
+#include "mainwindow.h"
 #include "file.h"
 
 class Twitter : public QObject
@@ -17,7 +18,7 @@ private:
     QString username;
     QString password;
     std::string userID;
-    QVector<QString>jsonTwits;
+    QVector<QByteArray>jsonTwits;
     std::string accessTokenKey;
     std::string accessTokenSecret;
     std::string authorizeUrl;

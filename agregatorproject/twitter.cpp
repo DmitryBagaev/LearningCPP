@@ -3,7 +3,7 @@
 Twitter::Twitter():consumerKey("gHgu7FSS5Oo4x2eSekIEvrsHt"), consumerSecret("jMQD7I2ovMuZFkZNQEvh3yx1FB2omOKXOlTgg6tliOvVDeeKzY"),
     userID("2891789529"), jsonTwits(5000)
 {
-        QObject::connect(this, &Twitter::userDataIsSet, this, &Twitter::authorise);
+    QObject::connect(this, &Twitter::userDataIsSet, this, &Twitter::authorise);
 }
 
 
@@ -21,10 +21,8 @@ void Twitter::authorise()
 
 void Twitter::setPersonalData(QString username, QString password)
 {
-    std::string usernamestd = username.toStdString();
-    std::string passwordstd = password.toStdString();
-    setUsername(usernamestd);
-    setPassword(passwordstd);
+    setUsername(username.toStdString());
+    setPassword(password.toStdString());
     emit userDataIsSet();
 }
 
@@ -73,7 +71,7 @@ void Twitter::parseJsonToStr()
         if ( (outData[position] == '}') && ( (outData[position+1]== ',')&& (outData[position+2] == '{'&& (outData[position+3] == '"')) ) )
         {
             twitLength = position + 1 - beginningPosition;
-            jsonTwits[iter] = outData.mid(beginningPosition, twitLength);
+            jsonTwits[iter] = outData.mid(beginningPosition, twitLength).toUtf8();
             beginningPosition = position + 2;
             iter++;
         }
@@ -86,16 +84,15 @@ QString Twitter::makeStringForWritingIntoFile()
 
     QString textOfTwits("");
     int iter(0);
-
     while(!jsonTwits[iter].isEmpty())
     {
+        QJsonDocument jsonResponce = QJsonDocument::fromJson(jsonTwits[iter]);
+        QJsonObject jsonTwit = jsonResponce.object();
+        QJsonObject userInfo = jsonTwit["user"].toObject();
 
-        QtJson::JsonObject result = QtJson::parse(jsonTwits[iter]).toMap();
-        QtJson::JsonObject userInfo = result["user"].toMap();
-
-        textOfTwits += "Date of publication: " + result["created_at"].toString() +"\n";
+        textOfTwits += "Date of publication: " + jsonTwit["created_at"].toString() +"\n";
         textOfTwits +=  "Author: " + userInfo["name"].toString() +"\n";
-        textOfTwits += "text: " + result["text"].toString() +"\n";
+        textOfTwits += "text: " + jsonTwit["text"].toString() +"\n";
         textOfTwits += "\n";
         iter++;
     }
