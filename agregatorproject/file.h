@@ -4,8 +4,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QString>
-#include <QByteArray>
 #include <QDebug>
+#include <twitter.h>
 
 class FileManager : public QObject
 {
@@ -16,7 +16,7 @@ public:
     const QString filepass = "../agregatorproject/tweetstream.txt";
 
     void createFile();
-    void readMessageInFile(QString twitInfo);
+    void readMessageInFile(QString data);
 
     ~FileManager();
 };

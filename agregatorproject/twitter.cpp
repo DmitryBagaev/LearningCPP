@@ -1,18 +1,26 @@
 #include "twitter.h"
 
-void Twitter::setPersonalData(QString userID, QString username, QString password)
+void Twitter::authorise()
 {
-    std::string userIDstd = userID.toStdString();
-    std::string usernamestd = username.toStdString();
-    std::string passwordstd = password.toStdString();
-    setID(userIDstd);
-    setUsername(usernamestd);
-    setPassword(passwordstd);
+    this->authorisingApp();
+    this->makeRequest();
+    this->parseStrToJson();
+    finalData = this->writeTwitsInFile();
+    FileManager fileWithTwits;
+    fileWithTwits.createFile();
+    fileWithTwits.readMessageInFile(finalData);
 }
 
-void Twitter::setID(std::string userID)
+
+void Twitter::setPersonalData(MainWindow* window)
 {
-    this->userID = userID;
+    username = window->username;
+    password = window->password;
+    std::string usernamestd = username.toStdString();
+    std::string passwordstd = password.toStdString();
+    setUsername(usernamestd);
+    setPassword(passwordstd);
+    emit userDataIsSet();
 }
 
 void Twitter::setUsername(std::string username)
@@ -81,7 +89,7 @@ QString Twitter::writeTwitsInFile()
         QtJson::JsonObject userInfo = result["user"].toMap();
 
         textOfTwits += "Date of publication: " + result["created_at"].toString() +"\n";
-        textOfTwits +=  ": " + userInfo["name"].toString() +"\n";
+        textOfTwits +=  "Author: " + userInfo["name"].toString() +"\n";
         textOfTwits += "text: " + result["text"].toString() +"\n";
         textOfTwits += "\n";
         iter++;

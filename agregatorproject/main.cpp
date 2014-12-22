@@ -1,36 +1,31 @@
-#include <QCoreApplication>
-#include <QDebug>
-#include <QString>
-#include <QByteArray>
 #include "twitter.h"
 #include "file.h"
 #include "twitcurl.h"
-#include <QBuffer>
-#include <QIODevice>
-#include <QTextStream>
-#include <json.h>
-#include <QVector>
+#include "json.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 
 QT_USE_NAMESPACE
 
-const std::string consumerKey="gHgu7FSS5Oo4x2eSekIEvrsHt";
-const std::string consumerSecret="jMQD7I2ovMuZFkZNQEvh3yx1FB2omOKXOlTgg6tliOvVDeeKzY";
+void callme()
+{
+    qDebug() << "11";
+}
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication appl(argc, argv);
 
-    FileManager fileWithTwits;
-    fileWithTwits.createFile();
+    MainWindow window;
+    window.getConnectionWithButtons();
+    window.show();
 
     Twitter agregator;
-    agregator.setPersonalData("2889529", "DrBagaev", "cogitoergosum23");
-    agregator.authorisingApp();
-    agregator.makeRequest();
-    agregator.parseStrToJson();
-    fileWithTwits.readMessageInFile(agregator.writeTwitsInFile());
 
-    return 0;
-    return a.exec();
+    QObject::connect(window.ui->pushButton_3, &QPushButton::clicked, &window, &MainWindow::getUsernameAndPassword);
+    QObject::connect(&window, &MainWindow::haveData, &agregator, &Twitter::setPersonalData);
+    QObject::connect(&agregator, &Twitter::userDataIsSet, &agregator, &Twitter::authorise);
+
+    return appl.exec();
 }

@@ -9,10 +9,10 @@ void FileManager::createFile()
 
 }
 
-void FileManager::readMessageInFile(QString twitInfo)
+void FileManager::readMessageInFile(QString data)
 {
     QTextStream outStream(&tweetsFile);
-    outStream << twitInfo;
+    outStream << data;
 }
 
 
